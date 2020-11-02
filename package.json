@@ -1,0 +1,7 @@
+{
+  "name": "goto-extension-sdk",
+  "description": "SDK",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {}
+}
