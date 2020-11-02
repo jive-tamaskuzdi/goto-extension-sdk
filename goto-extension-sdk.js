@@ -2,6 +2,8 @@ window.GoToExtensionSDK = (() => {
   const handlers = {};
 
   window.addEventListener('message', (event => {
+    //TODO check event.origin if it's a valid source
+
     if (event.type !== 'GOTO___ONCLICK') {
       return;
     }
@@ -22,7 +24,17 @@ window.GoToExtensionSDK = (() => {
     handlers[name].push(callback);
   }
 
+  function shareContent(url) {
+    if (window.parent) {
+      window.parent.postMessage({
+        type: 'GOTO___SHOW_CONTENT',
+        url: url
+      }, '*') //TODO whitelisted origins only
+    }
+  }
+
   return {
-    onButtonClick: onButtonClick
+    onButtonClick: onButtonClick,
+    shareContent: shareContent,
   }
 });
