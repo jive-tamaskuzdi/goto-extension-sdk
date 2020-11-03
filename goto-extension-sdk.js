@@ -2,14 +2,16 @@ const handlers = {};
 
 window.addEventListener('message', (event => {
   //TODO check event.origin if it's a valid source
+  const type = event.data && event.data.type;
+  const button = event.data && event.data.button;
 
-  if (event.type !== 'GOTO___ONCLICK') {
+  if (type !== 'GOTO___ONCLICK') {
     return;
   }
 
 
-  if (handlers[event.button]) {
-    for (const handler of handlers[event.button]) {
+  if (handlers[button]) {
+    for (const handler of handlers[button]) {
       handler();
     }
   }
