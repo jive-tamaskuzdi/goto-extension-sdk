@@ -23,7 +23,7 @@ function onButtonClick(name, callback) {
   handlers[name].push(callback);
 }
 
-function shareContent(url) {
+function showContent(url) {
   if (window.parent) {
     window.parent.postMessage({
       type: 'GOTO___SHOW_CONTENT',
@@ -33,6 +33,6 @@ function shareContent(url) {
 }
 
 export const GoToExtensionSDK = {
-    onButtonClick: onButtonClick,
-    shareContent: shareContent,
+  onButtonClick: onButtonClick,
+  showContent: showContent,
 };
